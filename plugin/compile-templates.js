@@ -1,8 +1,9 @@
+// This code is adapted directly from the code of the "templating" package in
+// the meteor/meteor repository.
+
 var path = Npm.require('path');
 
 var doHTMLScanning = function (compileStep, htmlScanner) {
-  // XXX the way we deal with encodings here is sloppy .. should get
-  // religion on that
   var contents = compileStep.read().toString('utf8');
   var results;
 

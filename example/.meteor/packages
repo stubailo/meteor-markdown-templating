@@ -7,4 +7,5 @@ meteor-platform
 autopublish
 insecure
 sashko:markdown-templating
+mrt:moment
 

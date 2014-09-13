@@ -5,7 +5,7 @@ if (Meteor.isClient) {
 
   Template.hello.helpers({
     currentTime: function () {
-      return Session.get("time");
+      return moment(Session.get("time")).format("hh:mm:ss a");
     }
   });
 }

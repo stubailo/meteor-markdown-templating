@@ -1,7 +1,13 @@
 <head>
-  <title>example</title>
+  <title>Markdown Templating Example</title>
 </head>
 
 <body>
-  {{> markdownBody}}
+  <div class="markdown-body">
+    {{> markdownBody}}
+  </div>
 </body>
+
+<template name="htmlTemplate">
+  <p>This text comes from a template in example.html.</p>
+</template>
