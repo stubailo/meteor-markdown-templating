@@ -36,6 +36,8 @@ Naturally, you can use helpers and include other templates inside your Markdown 
 
 Not at all. I'm working on it though - I'm excited about using it in my own future projects, and I want to be reasonably sure it will work all of the time.
 
+Please report issues if you find them!
+
 ### Known issues/weirdness
 
 1. Extraneous paragraph tags around template inclusions. If you put `{{> hello}}` on a line by itself it becomes `<p>{{> hello}}</p>` after the template is compiled, which is kind of silly but maybe doesn't break that much. In fact, maybe it's good because it adds the correct spacing around the embedded element.
