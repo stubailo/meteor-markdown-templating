@@ -27,7 +27,7 @@ Naturally, you can use helpers and include other templates inside your Markdown 
 
 ### Why would I use this if there's already the {{#markdown}} helper?
 
-- I like to use an editor with live preview ([Mou](http://mouapp.com/)) to edit Markdown files, and it doesn't work with Markdown embedded in HTML.
+- You like to use an editor with live preview ([Mou](http://mouapp.com/)) to edit Markdown files, and it doesn't work with Markdown embedded in HTML.
 - With this package, your markdown will be pre-compiled on the server when the app is built instead of compiled on the client every time the page is loaded.
 - If you want to make a lot of templates that use Markdown, it's easier and more reasonable to keep them in .md files than .html files.
 - Extending the Meteor templating system is fun.
