@@ -8,4 +8,8 @@ if (Meteor.isClient) {
       return moment(Session.get("time")).format("hh:mm:ss a");
     }
   });
+
+  Meteor.startup(function () {
+    console.log(Blaze.toHTML(Template.markdownBody));
+  });
 }
