@@ -10,7 +10,7 @@ Package._transitional_registerBuildPlugin({
   name: "compileTemplates",
   use: ['showdown', 'spacebars-compiler', 'underscore'],
   sources: [
-    'plugin/html_scanner.js',
+    'plugin/md_scanner.js',
     'plugin/compile-templates.js'
   ]
 });
