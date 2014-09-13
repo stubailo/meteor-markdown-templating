@@ -1,7 +1,8 @@
 Package.describe({
-  summary: "Allows templates to be defined in .md files",
+  summary: "Define templates inside .md files.",
   version: '1.0.0',
-  name: "sashko:markdown-templating"
+  name: "sashko:markdown-templating",
+  git: "https://github.com/stubailo/meteor-markdown-templating"
 });
 
 // Today, this package is closely intertwined with Showdown and Spacebars
@@ -17,10 +18,5 @@ Package._transitional_registerBuildPlugin({
 
 // This on_use describes the *runtime* implications of using this package.
 Package.on_use(function (api) {
-  // html_scanner.js emits client code that calls Meteor.startup and
-  // Blaze, so anybody using templating (eg apps) need to implicitly use
-  // 'meteor' and 'blaze'.
-  api.use('blaze');
-  api.use('underscore');
-  api.imply(['meteor', 'blaze', 'templating'], 'client');
+  api.imply(['templating'], 'client');
 });

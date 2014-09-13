@@ -5,6 +5,10 @@ Make Meteor templates in .md files!
 
 ### How to use
 
+`meteor add sashko:markdown-templating`
+
+Check out the [example app](https://github.com/stubailo/meteor-markdown-templating/tree/master/example), in particular [example.md](https://github.com/stubailo/meteor-markdown-templating/blob/master/example/example.md).
+
 Make a markdown file inside your Meteor app. Inside your markdown, use `{{#template name='templateName'}}` to start a template, and `{{/template}}` to end it. For example:
 
 ```
