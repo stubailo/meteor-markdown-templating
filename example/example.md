@@ -1,4 +1,4 @@
-{{#template name="markdownBody"}}
+{{#template name='markdownBody'}}
 
 # Welcome to Meteor!
 

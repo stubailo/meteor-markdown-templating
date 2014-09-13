@@ -13,7 +13,7 @@ markdown_scanner = {
   scan: function (contents, source_name) {
     var results = {};
 
-    var crazyTemplateRegex = /(^|\n){{#template(\s+\w+="\w+")+}}((.|[\n\r])+?)\n{{\/template}}/g;
+    var crazyTemplateRegex = /(^|\n){{#template(\s+\w+=["']\w+["'])+}}((.|[\n\r])+?)\n{{\/template}}/g;
 
     var match;
     while ((match = crazyTemplateRegex.exec(contents))) {
@@ -22,10 +22,11 @@ markdown_scanner = {
       
       // get attributes
       var attribs = {};
-      var startTag = match[0].match(/{{#template(\s+\w+="\w+")+}}/);
-      var attribRegex = /(\w+)="(\w+)"/g;
+      var startTag = match[0].match(/{{#template(\s+\w+=["']\w+["'])+}}/);
+      var attribRegex = /(\w+)=["'](\w+)["']/g;
 
       while ((attribMatch = attribRegex.exec(startTag))) {
+        console.log(attribMatch);
         attribs[attribMatch[1]] = attribMatch[2];
       }
 
