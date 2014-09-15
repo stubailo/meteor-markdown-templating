@@ -67,7 +67,7 @@
   ],
   "pluginDependencies": [
     [
-      "compileTemplates",
+      "compileMarkdownTemplates",
       {
         "spacebars-compiler": "1.0.2",
         "html-tools": "1.0.0",

@@ -21,7 +21,8 @@ markdown_scanner = {
       
       // get attributes
       var attribs = {};
-      var startTag = match[0].match(/{{#template(\s+\w+=["']\w+["'])+}}/);
+      var startTagRegex = new RegExp("{{#template(\\s+\\w+=[\"']\\w+[\"'])+}}");
+      var startTag = match[0].match(startTagRegex);
       var attribRegex = /(\w+)=["'](\w+)["']/g;
 
       while ((attribMatch = attribRegex.exec(startTag))) {
@@ -85,6 +86,12 @@ markdown_scanner = {
     
         // parse markdown
         contents = converter.makeHtml(contents);
+
+        // remove extraneous paragraphs around template inclusions
+        contents = contents.replace(/<p>({{\s*>[^{}]+}})<\/p>/g, "$1");
+
+        results.uncompiled = results.uncompiled || {};
+        results.uncompiled[name] = contents;
 
         var renderFuncCode = SpacebarsCompiler.compile(
           contents, {
