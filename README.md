@@ -34,10 +34,10 @@ Naturally, you can use helpers and include other templates inside your Markdown 
 
 ### How well tested is this package?
 
-Not at all. I'm working on it though - I'm excited about using it in my own future projects, and I want to be reasonably sure it will work all of the time.
+There are a few tests, but they are mostly sanity checks and don't go into testing all of the possible combinations of templates, markdown, and helpers.
 
 Please report issues if you find them!
 
 ### Known issues/weirdness
 
-1. Extraneous paragraph tags around template inclusions. If you put `{{> hello}}` on a line by itself it becomes `<p>{{> hello}}</p>` after the template is compiled, which is kind of silly but maybe doesn't break that much. In fact, maybe it's good because it adds the correct spacing around the embedded element.
+1. No error handling - you'll just get a printout that says "parse error" in the console... if you're lucky.

@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Define templates inside .md files.",
-  version: '1.0.1',
+  version: '1.1.0',
   name: "sashko:markdown-templating",
   git: "https://github.com/stubailo/meteor-markdown-templating"
 });
