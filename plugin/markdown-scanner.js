@@ -63,16 +63,7 @@ markdown_scanner = {
       }
     }
 
-    if (tag === "head") {
-      if (hasAttribs)
-        throwParseError("Attributes on <head> not supported");
-      results.head += contents;
-      return;
-    }
-
-
-    // <body> or <template>
-
+    // <template>
     try {
       if (tag === "template") {
         var name = attribs.name;
@@ -105,19 +96,6 @@ markdown_scanner = {
         results.js += "\nTemplate.__checkName(" + nameLiteral + ");\n" +
           "Template[" + nameLiteral + "] = new Template(" +
           templateDotNameLiteral + ", " + renderFuncCode + ");\n";
-      } else {
-        // <body>
-        if (hasAttribs)
-          throwParseError("Attributes on <body> not supported");
-
-        var renderFuncCode = SpacebarsCompiler.compile(
-          contents, {
-            isBody: true,
-            sourceName: "<body>"
-          });
-
-        // We may be one of many `<body>` tags.
-        results.js += "\nTemplate.body.addContent(" + renderFuncCode + ");\nMeteor.startup(Template.body.renderToDocument);\n";
       }
     } catch (e) {
       if (e.scanner) {
