@@ -3,6 +3,8 @@ markdown-templating
 
 Make Meteor templates in .md files!
 
+https://travis-ci.org/stubailo/meteor-markdown-templating.svg
+
 ### How to use
 
 `meteor add sashko:markdown-templating`
