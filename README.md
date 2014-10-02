@@ -5,7 +5,7 @@ Make Meteor templates in .md files!
 
 ### How to use
 
-`meteor add sashko:markdown-templating`
+`meteor add simple:markdown-templating`
 
 Check out the [example app](https://github.com/stubailo/meteor-markdown-templating/tree/master/example), in particular [example.md](https://github.com/stubailo/meteor-markdown-templating/blob/master/example/example.md).
 

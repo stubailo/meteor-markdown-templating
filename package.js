@@ -1,7 +1,7 @@
 Package.describe({
   summary: "Define templates inside .md files.",
   version: '1.1.0',
-  name: "sashko:markdown-templating",
+  name: "simple:markdown-templating",
   git: "https://github.com/stubailo/meteor-markdown-templating"
 });
 
@@ -28,7 +28,7 @@ Package.onUse(function (api) {
 Package.onTest(function (api) {
   api.use([
     "tinytest",
-    "sashko:markdown-templating",
+    "simple:markdown-templating",
     "underscore",
     "spacebars-compiler",
     "showdown"
