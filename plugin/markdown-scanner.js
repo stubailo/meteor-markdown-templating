@@ -74,9 +74,15 @@ markdown_scanner = {
           throwParseError("Template can't be named \"" + name + "\"");
 
         var converter = new Showdown.converter();
+
+        // don't let markdown parse inside handlebars stuff
+        contents = contents.replace(/({{[^{}]+}})/g, "<xxx>$1</xxx>");
     
         // parse markdown
         contents = converter.makeHtml(contents);
+
+        // don't let markdown parse inside handlebars stuff
+        contents = contents.replace(/<xxx>(.+?)<\/xxx>/g, "$1");
 
         // remove extraneous paragraphs around template inclusions
         contents = contents.replace(/<p>({{\s*[>#\/]\s*[^{}]+}})<\/p>/g, "$1");

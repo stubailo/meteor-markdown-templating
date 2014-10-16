@@ -1,5 +1,7 @@
 {{#template name="api_connections"}}
 
+{{> hello_world}}
+
 <h2 id="connections"><span>Server connections</span></h2>
 
 These functions manage and inspect the network connection between the
@@ -124,7 +126,7 @@ In the future, when client reconnection is fully implemented,
 reconnecting from the client will reconnect to the same connection on
 the server: the `onConnection` callback won't be called for that
 connection again, and the connection will still have the same
-connection `id`.
+connection `id`.g
 {{/note}}
 
 
