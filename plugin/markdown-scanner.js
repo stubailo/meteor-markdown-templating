@@ -79,7 +79,13 @@ markdown_scanner = {
         contents = converter.makeHtml(contents);
 
         // remove extraneous paragraphs around template inclusions
-        contents = contents.replace(/<p>({{\s*>[^{}]+}})<\/p>/g, "$1");
+        contents = contents.replace(/<p>({{\s*[>#\/]\s*[^{}]+}})<\/p>/g, "$1");
+
+        // move paragraphs before block openers
+        contents = contents.replace(/<p>({{#[^{}]+}})/g, "$1<p>");
+
+        // more paragraphs after block enders
+        contents = contents.replace(/({{\/[^{}]+}})<\/p>/g, "</p>$1");
 
         results.uncompiled = results.uncompiled || {};
         results.uncompiled[name] = contents;
