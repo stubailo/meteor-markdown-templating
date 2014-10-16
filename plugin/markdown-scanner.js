@@ -77,13 +77,12 @@ markdown_scanner = {
 
         // don't let markdown parse inside handlebars stuff
         contents = contents.replace(/({{[^{}]+?}})/g, "<div noMarkdown>$1</div>");
-        console.log(contents);
 
         // parse markdown
         contents = converter.makeHtml(contents);
 
         // don't let markdown parse inside handlebars stuff
-        contents = contents.replace(/<div noMarkdown>(.+?)<\/div>/g, "$1");
+        contents = contents.replace(/<div noMarkdown>{{([^{}]+?)}}<\/div>/g, "{{$1}}");
 
         // remove extraneous paragraphs around template inclusions
         contents = contents.replace(/<p>({{\s*[>#\/]\s*[^{}]+}})<\/p>/g, "$1");
