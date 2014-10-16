@@ -31,8 +31,8 @@ markdown_scanner = {
 
       var templateContents = match[3];
       var contentsStartIndex = match.index + match[3].length;
-      var throwParseError = function () {
-        console.log("Parse error");
+      var throwParseError = function (e, index) {
+        console.log(e, index);
       };
       var tagStartIndex = match.index;
 
