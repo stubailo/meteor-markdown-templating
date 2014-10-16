@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Define templates inside .md files.",
-  version: '1.1.0',
+  version: '1.1.1',
   name: "simple:markdown-templating",
   git: "https://github.com/stubailo/meteor-markdown-templating"
 });
