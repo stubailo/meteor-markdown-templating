@@ -75,14 +75,8 @@ markdown_scanner = {
 
         var converter = new Showdown.converter();
 
-        // don't let markdown parse inside handlebars stuff
-        contents = contents.replace(/({{[^{}]+?}})/g, "<div noMarkdown>$1</div>");
-
         // parse markdown
         contents = converter.makeHtml(contents);
-
-        // don't let markdown parse inside handlebars stuff
-        contents = contents.replace(/<div noMarkdown>{{([^{}]+?)}}<\/div>/g, "{{$1}}");
 
         // remove extraneous paragraphs around template inclusions
         contents = contents.replace(/<p>({{\s*[>#\/]\s*[^{}]+}})<\/p>/g, "$1");
