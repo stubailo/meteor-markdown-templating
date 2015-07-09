@@ -9,10 +9,10 @@ Package.describe({
 Package._transitional_registerBuildPlugin({
   name: "compileMarkdownTemplates",
   use: [
-    'showdown',
-    'spacebars-compiler',
-    'underscore',
-    'simple:highlight.js'
+    'markdown@1.0.4',
+    'spacebars-compiler@1.0.6',
+    'underscore@1.0.3',
+    'simple:highlight.js@1.0.9'
   ],
   sources: [
     'plugin/markdown-scanner.js',
