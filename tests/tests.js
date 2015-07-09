@@ -27,5 +27,11 @@ Tinytest.add("markdown-templating - markdown scanner", function (test) {
     "<li>{{> template}}</li>\n" +
     "</ul>");
 
+  test.equal(results.uncompiled["has_underscore"],
+    "<p>This is template has_underscore.</p>");
+
+  test.equal(results.uncompiled["has-dash"],
+    "<p>This is template has-dash.</p>");
+
   // XXX add error handling and test that too
 });

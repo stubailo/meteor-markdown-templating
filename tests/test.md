@@ -33,3 +33,13 @@ This is template 6.
 - {{helper}}
 - {{> template}}
 {{/template}}
+
+The next few templates test different kinds of template names
+
+{{#template name="has_underscore"}}
+This is template has_underscore.
+{{/template}}
+
+{{#template name="has-dash"}}
+This is template has-dash.
+{{/template}}
