@@ -1,54 +1,49 @@
-// This code is adapted directly from the code of the "templating" package in
-// the meteor/meteor repository.
+Plugin.registerCompiler(
+  {
+    extensions: ["md"],
+    isTemplate: true
+  },
+  () => new MdCompiler
+);
 
-var path = Npm.require('path');
-
-var doHTMLScanning = function (compileStep, htmlScanner) {
-  var contents = compileStep.read().toString('utf8');
-  var results;
-
-  try {
-    results = htmlScanner.scan(contents, compileStep.inputPath);
-  } catch (e) {
-    if (e instanceof htmlScanner.ParseError) {
-      compileStep.error({
-        message: e.message,
-        sourcePath: compileStep.inputPath,
-        line: e.line
-      });
-      return;
-    } else {
-      throw e;
-    }
-  }
-
-  if (results.js) {
-    var path_part = path.dirname(compileStep.inputPath);
-
-    if (path_part === '.') {
-      path_part = '';
-    }
-
-    if (path_part.length && path_part !== path.sep) {
-      path_part = path_part + path.sep;
-    }
-
-    var ext = path.extname(compileStep.inputPath);
-    var basename = path.basename(compileStep.inputPath, ext);
-
-    // XXX generate a source map
-
-    compileStep.addJavaScript({
-      path: path.join(path_part, "template." + basename + ".md.js"),
-      sourcePath: compileStep.inputPath,
-      data: results.js
+export class MdCompiler extends CachingCompiler {
+  constructor() {
+    super({
+      compilerName: 'md',
+      defaultCacheSize: 1024*1024*10,
     });
   }
-};
-
-Plugin.registerSourceHandler(
-  "md", {isTemplate: true, archMatching: 'web'},
-  function (compileStep) {
-    doHTMLScanning(compileStep, markdown_scanner);
+  getCacheKey(inputFile) {
+    return inputFile.getSourceHash();
   }
-);
+  compileResultSize(compileResult) {
+    return compileResult.length;
+  }
+  compileOneFile(inputFile) {
+    const content = inputFile.getContentsAsString().toString('utf8');
+
+    let results;
+    try {
+      results = markdown_scanner.scan(content);
+    } catch (e) {
+      if (! (e instanceof markdown_scanner.ParseError)) {
+        throw e;
+      }
+
+      inputFile.error({
+        message: e.message,
+        sourcePath: files.inputPath,
+        line: e.line
+      });
+    }
+
+    return results;
+  }
+  addCompileResult(inputFile, compileResult) {
+    if (! (compileResult && compileResult.js)) return;
+    inputFile.addJavaScript({
+      path: inputFile.getPathInPackage() + '.js',
+      data: compileResult.js,
+    });
+  }
+}
