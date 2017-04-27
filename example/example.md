@@ -20,7 +20,7 @@ proper CSS. In this case, we have included CSS for a GitHub look, from
 
 ### HTML Template Inclusion Below
 
-{{> html_template}}
-{{> html_template}}
+{{> htmlTemplate}}
+{{> htmlTemplate}}
 
 {{/template}}
