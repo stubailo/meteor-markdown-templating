@@ -42,7 +42,7 @@ Package.onTest(function (api) {
     "tests/tests.js"
   ], "server");
 
-  api.addFiles([
+  api.addAssets([
     "tests/test.md"
-  ], "server", {asset: true});
+  ], "server");
 });
