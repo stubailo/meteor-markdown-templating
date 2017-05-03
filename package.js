@@ -1,14 +1,16 @@
 Package.describe({
   summary: "Define templates inside .md files.",
-  version: '1.2.7',
+  version: '2.0.0',
   name: "simple:markdown-templating",
   git: "https://github.com/stubailo/meteor-markdown-templating"
 });
 
 // Today, this package is closely intertwined with Showdown and Spacebars
-Package._transitional_registerBuildPlugin({
+Package.registerBuildPlugin({
   name: "compileMarkdownTemplates",
   use: [
+    'caching-compiler',
+    'ecmascript',
     'markdown@1.0.4',
     'spacebars-compiler@1.0.6',
     'underscore@1.0.3',
@@ -22,7 +24,7 @@ Package._transitional_registerBuildPlugin({
 
 // This on_use describes the *runtime* implications of using this package.
 Package.onUse(function (api) {
-  api.versionsFrom("0.9.1");
+  api.use('isobuild:compiler-plugin@1.0.0');
   api.imply(['templating'], 'client');
 });
 
@@ -40,7 +42,7 @@ Package.onTest(function (api) {
     "tests/tests.js"
   ], "server");
 
-  api.addFiles([
+  api.addAssets([
     "tests/test.md"
-  ], "server", {asset: true});
+  ], "server");
 });
