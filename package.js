@@ -9,8 +9,8 @@ Package.describe({
 Package.registerBuildPlugin({
   name: "compileMarkdownTemplates",
   use: [
-    'caching-compiler',
-    'ecmascript',
+    'caching-compiler@1.1.6',
+    'ecmascript@0.7.0',
     'markdown@1.0.4',
     'spacebars-compiler@1.0.6',
     'underscore@1.0.3',
@@ -25,7 +25,7 @@ Package.registerBuildPlugin({
 // This on_use describes the *runtime* implications of using this package.
 Package.onUse(function (api) {
   api.use('isobuild:compiler-plugin@1.0.0');
-  api.imply(['templating'], 'client');
+  api.imply(['templating@1.3.0'], 'client');
 });
 
 Package.onTest(function (api) {
