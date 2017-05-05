@@ -32,7 +32,7 @@ export class MdCompiler extends CachingCompiler {
 
       inputFile.error({
         message: e.message,
-        sourcePath: files.inputPath,
+        sourcePath: inputFile.getPathInPackage(),
         line: e.line
       });
     }
